@@ -1,4 +1,6 @@
-from Tasks import SentencePiecingTrainTask, SentencePiecingEncodingTask, SentencePiecingDecodingTask, Word2VecTrainingTask
+from Tasks import SentencePiecingTrainTask, SentencePiecingEncodingTask,\
+    SentencePiecingDecodingTask, Word2VecTrainingTask, \
+    RWord2VecTrainingTask, S2STrainingTask
 from .config import load_config
 import os
 
@@ -24,6 +26,10 @@ def __create_encode_decode_task(args, config):
 def __create_training_task(args, config):
     if args.train_task == "word2vec":
         return Word2VecTrainingTask(config, args.language)
+    elif args.train_task == "rword2vec":
+        return RWord2VecTrainingTask(config, args.language)
+    elif args.train_task == "sentence":
+        return S2STrainingTask(config, args.language)
     else:
         raise NotImplementedError("Not implemented for %s training task"%args.train_task)
 def create_task(args):

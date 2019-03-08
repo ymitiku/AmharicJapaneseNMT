@@ -9,6 +9,7 @@ task_choices = [
 ]
 training_task_choices = [
     "word2vec",
+    "rword2vec",
     "sentence",
     "translation"
 ]
