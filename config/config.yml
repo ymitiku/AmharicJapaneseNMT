@@ -1,0 +1,83 @@
+
+
+params:
+  vocab_size:
+    10000
+  word2vec:
+    embedding_dim:
+      256
+    window_size:
+      1
+  sentence_representation:
+    embedding_dim:
+      512
+    max_sentence_length:
+      16
+  spm_model:
+    model_type:
+      unigram
+    character_coverage:
+      en:
+        1.0
+      am:
+        0.999
+      jp:
+        0.999
+    output_format:
+      id
+    
+      
+    
+
+hyper_params:
+  word2vec:
+    lr:
+      0.001
+    batch_size:
+      4096
+    epochs:
+       10
+    steps:
+      1000
+    val_steps:
+      100
+      
+  sentence_representation:
+    lr:
+      0.001
+    batch_size:
+      32
+    epochs:
+       100
+    steps:
+      1000
+    val_steps:
+      100
+
+dataset:
+  raw_data:
+      am:
+        train: "Resources/dataset/raw-data/train.am-en.base.am"
+        dev: "Resources/dataset/raw-data/dev.am-en.base.am"
+        test: "Resources/dataset/raw-data/test.am-en.base.am"
+      en:
+        train: "Resources/dataset/raw-data/train.am-en.base.en"
+        dev: "Resources/dataset/raw-data/dev.am-en.base.en"
+        test: "Resources/dataset/raw-data/test.am-en.base.en"
+  
+  
+      
+
+
+output:
+  spm:
+    model_dir:
+      "Resources/spm_model"
+    encoded_dir:
+      "Resources/dataset/encoded"
+    decoded_dir:
+      "Resources/dataset/decoded"
+  word2vec:
+    model_dir:
+      "Resources/word2vec/models"
+    
